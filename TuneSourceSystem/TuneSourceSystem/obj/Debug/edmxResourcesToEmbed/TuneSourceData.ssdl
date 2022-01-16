@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tunesourceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="account_id" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="customer_id" Type="varchar" MaxLength="5" />
+    <Property Name="purchase_id" Type="varchar" MaxLength="5" />
+    <Property Name="customer_username" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="admin_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="admin_username" Type="int" Nullable="false" />
+    <Property Name="admin_password" Type="nvarchar" MaxLength="200" />
+    <Property Name="customer_email" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="customer_id" Type="varchar" MaxLength="5" />
+    <Property Name="purchase_id" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="cd_id" Type="varchar" MaxLength="5" />
+    <Property Name="song_id" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="cd">
+    <Key>
+      <PropertyRef Name="cd_id" />
+    </Key>
+    <Property Name="cd_id" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="cd_title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="cd_price" Type="int" Nullable="false" />
+    <Property Name="cd_details" Type="nvarchar" MaxLength="200" />
+    <Property Name="cd_image" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="cd_established" Type="int" Nullable="false" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="customer_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="customer_username" Type="int" Nullable="false" />
+    <Property Name="customer_password" Type="nvarchar" MaxLength="200" />
+    <Property Name="customer_email" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="giftcard">
+    <Key>
+      <PropertyRef Name="giftcard_number" />
+    </Key>
+    <Property Name="giftcard_number" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="customer_id" Type="varchar" MaxLength="5" />
+    <Property Name="song_id" Type="varchar" MaxLength="10" />
+    <Property Name="admin_id" Type="varchar" MaxLength="5" />
+    <Property Name="customer_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchase">
+    <Key>
+      <PropertyRef Name="purchase_id" />
+    </Key>
+    <Property Name="purchase_id" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="customer_id" Type="varchar" MaxLength="5" />
+    <Property Name="giftcard_number" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="songs">
+    <Key>
+      <PropertyRef Name="song_id" />
+    </Key>
+    <Property Name="song_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="song_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="song_authors" Type="nvarchar" MaxLength="50" />
+    <Property Name="song_lyrics" Type="nvarchar" MaxLength="300" />
+    <Property Name="song_time" Type="int" />
+  </EntityType>
+  <EntityType Name="songsandcd">
+    <Key>
+      <PropertyRef Name="song_id" />
+      <PropertyRef Name="cd_id" />
+    </Key>
+    <Property Name="song_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="cd_id" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="note" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="typeofmusic">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type_ descriptions" Type="nvarchar" MaxLength="300" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__account__custome__07C12930">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__account__purchas__08B54D69">
+    <End Role="purchase" Type="Self.purchase" Multiplicity="0..1" />
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="purchase">
+        <PropertyRef Name="purchase_id" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="purchase_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__admin__cd_id__74AE54BC">
+    <End Role="cd" Type="Self.cd" Multiplicity="0..1" />
+    <End Role="admin" Type="Self.admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cd">
+        <PropertyRef Name="cd_id" />
+      </Principal>
+      <Dependent Role="admin">
+        <PropertyRef Name="cd_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__admin__customer___73BA3083">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="admin" Type="Self.admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="admin">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__admin__song_id__75A278F5">
+    <End Role="songs" Type="Self.songs" Multiplicity="0..1" />
+    <End Role="admin" Type="Self.admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="songs">
+        <PropertyRef Name="song_id" />
+      </Principal>
+      <Dependent Role="admin">
+        <PropertyRef Name="song_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giftcard__admin___7B5B524B">
+    <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+    <End Role="giftcard" Type="Self.giftcard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="admin">
+        <PropertyRef Name="admin_id" />
+      </Principal>
+      <Dependent Role="giftcard">
+        <PropertyRef Name="admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giftcard__custom__797309D9">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="giftcard" Type="Self.giftcard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="giftcard">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giftcard__song_i__7A672E12">
+    <End Role="songs" Type="Self.songs" Multiplicity="0..1" />
+    <End Role="giftcard" Type="Self.giftcard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="songs">
+        <PropertyRef Name="song_id" />
+      </Principal>
+      <Dependent Role="giftcard">
+        <PropertyRef Name="song_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__purchase__custom__03F0984C">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="purchase" Type="Self.purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="purchase">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__purchase__giftca__04E4BC85">
+    <End Role="giftcard" Type="Self.giftcard" Multiplicity="0..1" />
+    <End Role="purchase" Type="Self.purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="giftcard">
+        <PropertyRef Name="giftcard_number" />
+      </Principal>
+      <Dependent Role="purchase">
+        <PropertyRef Name="giftcard_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cdid">
+    <End Role="cd" Type="Self.cd" Multiplicity="1" />
+    <End Role="songsandcd" Type="Self.songsandcd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cd">
+        <PropertyRef Name="cd_id" />
+      </Principal>
+      <Dependent Role="songsandcd">
+        <PropertyRef Name="cd_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_songid">
+    <End Role="songs" Type="Self.songs" Multiplicity="1" />
+    <End Role="songsandcd" Type="Self.songsandcd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="songs">
+        <PropertyRef Name="song_id" />
+      </Principal>
+      <Dependent Role="songsandcd">
+        <PropertyRef Name="song_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_typeid">
+    <End Role="typeofmusic" Type="Self.typeofmusic" Multiplicity="1" />
+    <End Role="cd" Type="Self.cd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="typeofmusic">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="cd">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tunesourceModelStoreContainer">
+    <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cd" EntityType="Self.cd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="giftcard" EntityType="Self.giftcard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purchase" EntityType="Self.purchase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="songs" EntityType="Self.songs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="songsandcd" EntityType="Self.songsandcd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="typeofmusic" EntityType="Self.typeofmusic" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__account__custome__07C12930" Association="Self.FK__account__custome__07C12930">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__account__purchas__08B54D69" Association="Self.FK__account__purchas__08B54D69">
+      <End Role="purchase" EntitySet="purchase" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__admin__cd_id__74AE54BC" Association="Self.FK__admin__cd_id__74AE54BC">
+      <End Role="cd" EntitySet="cd" />
+      <End Role="admin" EntitySet="admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__admin__customer___73BA3083" Association="Self.FK__admin__customer___73BA3083">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="admin" EntitySet="admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__admin__song_id__75A278F5" Association="Self.FK__admin__song_id__75A278F5">
+      <End Role="songs" EntitySet="songs" />
+      <End Role="admin" EntitySet="admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giftcard__admin___7B5B524B" Association="Self.FK__giftcard__admin___7B5B524B">
+      <End Role="admin" EntitySet="admin" />
+      <End Role="giftcard" EntitySet="giftcard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giftcard__custom__797309D9" Association="Self.FK__giftcard__custom__797309D9">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="giftcard" EntitySet="giftcard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giftcard__song_i__7A672E12" Association="Self.FK__giftcard__song_i__7A672E12">
+      <End Role="songs" EntitySet="songs" />
+      <End Role="giftcard" EntitySet="giftcard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__purchase__custom__03F0984C" Association="Self.FK__purchase__custom__03F0984C">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="purchase" EntitySet="purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__purchase__giftca__04E4BC85" Association="Self.FK__purchase__giftca__04E4BC85">
+      <End Role="giftcard" EntitySet="giftcard" />
+      <End Role="purchase" EntitySet="purchase" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cdid" Association="Self.fk_cdid">
+      <End Role="cd" EntitySet="cd" />
+      <End Role="songsandcd" EntitySet="songsandcd" />
+    </AssociationSet>
+    <AssociationSet Name="fk_songid" Association="Self.fk_songid">
+      <End Role="songs" EntitySet="songs" />
+      <End Role="songsandcd" EntitySet="songsandcd" />
+    </AssociationSet>
+    <AssociationSet Name="fk_typeid" Association="Self.fk_typeid">
+      <End Role="typeofmusic" EntitySet="typeofmusic" />
+      <End Role="cd" EntitySet="cd" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

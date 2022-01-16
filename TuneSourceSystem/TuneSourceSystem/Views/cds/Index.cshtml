@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TuneSourceSystem.cd>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_established)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typeofmusic.type_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_details)
+        </td>
+        <td>
+            <div id="anh">
+                <img src="@Url.Content("~/Images/"+item.cd_image)"
+                     width="150" height="150" style="border-radius:20px" />
+            </div>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_established)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typeofmusic.type_name)
+        </td>
+        <td>
+            @Html.ActionLink("Listen", "Listen", new { id = item.cd_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.cd_id }) |
+            @Html.ActionLink("Download", "Download", new { id = item.cd_id }) |
+        </td>
+    </tr>
+}
+
+</table>

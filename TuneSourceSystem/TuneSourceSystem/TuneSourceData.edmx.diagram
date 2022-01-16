@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8cb045eb4f064b8b89ebf7f482d34a54" Name="Diagram1">
+        <EntityTypeShape EntityType="tunesourceModel.account" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tunesourceModel.admin" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="tunesourceModel.cd" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tunesourceModel.customer" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tunesourceModel.giftcard" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tunesourceModel.purchase" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tunesourceModel.song" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="tunesourceModel.songsandcd" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tunesourceModel.typeofmusic" Width="1.5" PointX="1.5" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="tunesourceModel.FK__account__custome__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__account__purchas__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__admin__cd_id__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__admin__customer___73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__admin__song_id__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__giftcard__admin___7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.fk_cdid" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.fk_typeid" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__giftcard__custom__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__purchase__custom__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__giftcard__song_i__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.FK__purchase__giftca__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="tunesourceModel.fk_songid" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

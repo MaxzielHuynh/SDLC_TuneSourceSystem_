@@ -1,0 +1,66 @@
+﻿@model TuneSourceSystem.cd
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cd</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_established)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_established)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typeofmusic.type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeofmusic.type_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cd_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

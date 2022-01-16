@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tunesourceModelStoreContainer" CdmEntityContainer="tunesourceEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="tunesourceModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+          <ScalarProperty Name="customer_username" ColumnName="customer_username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="tunesourceModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="admin_name" ColumnName="admin_name" />
+          <ScalarProperty Name="admin_username" ColumnName="admin_username" />
+          <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+          <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+          <ScalarProperty Name="cd_id" ColumnName="cd_id" />
+          <ScalarProperty Name="song_id" ColumnName="song_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cds">
+      <EntityTypeMapping TypeName="tunesourceModel.cd">
+        <MappingFragment StoreEntitySet="cd">
+          <ScalarProperty Name="cd_id" ColumnName="cd_id" />
+          <ScalarProperty Name="cd_title" ColumnName="cd_title" />
+          <ScalarProperty Name="cd_price" ColumnName="cd_price" />
+          <ScalarProperty Name="cd_details" ColumnName="cd_details" />
+          <ScalarProperty Name="cd_image" ColumnName="cd_image" />
+          <ScalarProperty Name="cd_established" ColumnName="cd_established" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="tunesourceModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="customer_username" ColumnName="customer_username" />
+          <ScalarProperty Name="customer_password" ColumnName="customer_password" />
+          <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="giftcards">
+      <EntityTypeMapping TypeName="tunesourceModel.giftcard">
+        <MappingFragment StoreEntitySet="giftcard">
+          <ScalarProperty Name="giftcard_number" ColumnName="giftcard_number" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="song_id" ColumnName="song_id" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchases">
+      <EntityTypeMapping TypeName="tunesourceModel.purchase">
+        <MappingFragment StoreEntitySet="purchase">
+          <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="giftcard_number" ColumnName="giftcard_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="songs">
+      <EntityTypeMapping TypeName="tunesourceModel.song">
+        <MappingFragment StoreEntitySet="songs">
+          <ScalarProperty Name="song_id" ColumnName="song_id" />
+          <ScalarProperty Name="song_name" ColumnName="song_name" />
+          <ScalarProperty Name="song_authors" ColumnName="song_authors" />
+          <ScalarProperty Name="song_lyrics" ColumnName="song_lyrics" />
+          <ScalarProperty Name="song_time" ColumnName="song_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="songsandcds">
+      <EntityTypeMapping TypeName="tunesourceModel.songsandcd">
+        <MappingFragment StoreEntitySet="songsandcd">
+          <ScalarProperty Name="song_id" ColumnName="song_id" />
+          <ScalarProperty Name="cd_id" ColumnName="cd_id" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="typeofmusics">
+      <EntityTypeMapping TypeName="tunesourceModel.typeofmusic">
+        <MappingFragment StoreEntitySet="typeofmusic">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="type_name" ColumnName="type_name" />
+          <ScalarProperty Name="type__descriptions" ColumnName="type_ descriptions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
